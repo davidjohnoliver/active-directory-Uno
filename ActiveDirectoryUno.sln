@@ -11,11 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveDirectoryUno.iOS", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveDirectoryUno.UWP", "ActiveDirectoryUno\ActiveDirectoryUno.UWP\ActiveDirectoryUno.UWP.csproj", "{B8BC2635-8E6A-4916-9900-12A0FCE5AFB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveDirectoryUno.Wasm", "ActiveDirectoryUno\ActiveDirectoryUno.Wasm\ActiveDirectoryUno.Wasm.csproj", "{513BB4D4-940D-40F7-8CEE-4339AEA7A4F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActiveDirectoryUno.Wasm", "ActiveDirectoryUno\ActiveDirectoryUno.Wasm\ActiveDirectoryUno.Wasm.csproj", "{513BB4D4-940D-40F7-8CEE-4339AEA7A4F2}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ActiveDirectoryUno\ActiveDirectoryUno.Shared\ActiveDirectoryUno.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
+		ActiveDirectoryUno\ActiveDirectoryUno.Shared\ActiveDirectoryUno.Shared.projitems*{b8bc2635-8e6a-4916-9900-12a0fce5afb4}*SharedItemsImports = 4
+		ActiveDirectoryUno\ActiveDirectoryUno.Shared\ActiveDirectoryUno.Shared.projitems*{decef0a7-dad2-4109-90d8-dfbfc7d7e61f}*SharedItemsImports = 4
+		ActiveDirectoryUno\ActiveDirectoryUno.Shared\ActiveDirectoryUno.Shared.projitems*{e783f1fb-45bf-4318-98d3-4c5eba2f365d}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
