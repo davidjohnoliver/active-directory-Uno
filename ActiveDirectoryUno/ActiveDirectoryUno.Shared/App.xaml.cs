@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using _LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace ActiveDirectoryUno
 {
@@ -23,6 +25,17 @@ namespace ActiveDirectoryUno
     /// </summary>
     sealed partial class App : Application
     {
+        public static IPublicClientApplication PCA = null;
+
+        /// <summary>
+        /// The ClientID is the Application ID found in the portal (https://go.microsoft.com/fwlink/?linkid=2083908). 
+        /// You can use the below id however if you create an app of your own you should replace the value here.
+        /// </summary>
+        public static string ClientID = "a7d8cef0-4145-49b2-a91d-95c54051fa3f";
+
+        public static string[] Scopes = { "User.Read" };
+        public static string Username = string.Empty;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -42,8 +55,13 @@ namespace ActiveDirectoryUno
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+
+            PCA = PublicClientApplicationBuilder.Create(ClientID)
+                .WithRedirectUri($"msal{App.ClientID}://auth")
+                .Build();
+
 #if DEBUG
-			if (System.Diagnostics.Debugger.IsAttached)
+            if (System.Diagnostics.Debugger.IsAttached)
 			{
 				// this.DebugSettings.EnableFrameRateCounter = true;
 			}
@@ -116,8 +134,8 @@ namespace ActiveDirectoryUno
             factory
                 .WithFilter(new FilterLoggerSettings
                     {
-                        { "Uno", LogLevel.Warning },
-                        { "Windows", LogLevel.Warning },
+                        { "Uno", _LogLevel.Warning },
+                        { "Windows", _LogLevel.Warning },
 
 						// Debug JS interop
 						// { "Uno.Foundation.WebAssemblyRuntime", LogLevel.Debug },
@@ -142,7 +160,7 @@ namespace ActiveDirectoryUno
 					}
                 )
 #if DEBUG
-				.AddConsole(LogLevel.Debug);
+				.AddConsole(_LogLevel.Debug);
 #else
                 .AddConsole(LogLevel.Information);
 #endif

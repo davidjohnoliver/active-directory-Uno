@@ -8,6 +8,28 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<TextBlock Text="Hello, world !" Margin="20" FontSize="30" />
+        <StackPanel x:Name="slUser" Visibility="Collapsed" Padding="5,10" VerticalAlignment="Top" Margin="0,50,0,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="DisplayName " FontWeight="Bold" />
+                <TextBlock x:Name="lblDisplayName" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="GivenName " FontWeight="Bold" />
+                <TextBlock x:Name="lblGivenName" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Surname " FontWeight="Bold" />
+                <TextBlock x:Name="lblSurname" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Id " FontWeight="Bold" />
+                <TextBlock x:Name="lblId" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="UserPrincipalName " FontWeight="Bold" />
+                <TextBlock x:Name="lblUserPrincipalName" />
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="btnSignInSignOut" Content="Sign in" Click="OnSignInSignOut" VerticalAlignment="Bottom" Margin="30"/>
     </Grid>
 </Page>
