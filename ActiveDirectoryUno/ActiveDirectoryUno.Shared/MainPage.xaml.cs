@@ -53,11 +53,9 @@ namespace ActiveDirectoryUno
                     {
                         try
                         {
-                            var activity = Uno.UI.ContextHelper.Current as Android.App.Activity;
                             authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
-                                                      //.WithParentActivityOrWindow(App.ParentWindow)
 #if __ANDROID__
-    .WithParentActivityOrWindow(activity)
+                                                      .WithParentActivityOrWindow(Uno.UI.ContextHelper.Current as Android.App.Activity)
 #endif
                                                       .ExecuteAsync();
 
