@@ -53,11 +53,13 @@ namespace ActiveDirectoryUno
                     {
                         try
                         {
-                            authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
+							authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 #if __ANDROID__
                                                       .WithParentActivityOrWindow(Uno.UI.ContextHelper.Current as Android.App.Activity)
+#elif __IOS__
+													  .WithParentActivityOrWindow(Window.RootViewController)
 #endif
-                                                      .ExecuteAsync();
+													  .ExecuteAsync();
 
                             await RefreshUserDataAsync(authResult.AccessToken);
                             Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { btnSignInSignOut.Content = "Sign out"; });
